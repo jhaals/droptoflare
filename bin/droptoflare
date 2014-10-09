@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+require 'droptoflare/digitalocean'
+require 'droptoflare/cloudflare'
+require 'yaml'
+
+begin
+  c = YAML.load_file(File.expand_path('~/.droptoflare.yaml'))
+rescue Errno::ENOENT
+  puts 'Hey! you need to create ~/.droptoflare.yaml with this info:'
+  puts
+  puts 'domain: example.com
+email: email_used_at_cloudflare@example.com
+cf_token: Cloudflare t0ken
+do_token: DigitalOcean t0ken'
+  exit 1
+end
+
+domain = c['domain']
+cf = Cloudflare.new(c['cf_token'], domain, c['email'])
+digitalocean = DigitalOcean.new(c['do_token'])
+
+cf_records = cf.records
+droplets = digitalocean.droplets
+puts "Found #{droplets.length} Droplets checking IP's against #{cf_records.length} CF records"
+result = 0
+droplets.each do |name, ip|
+  domain_name = "#{name}.#{domain}"
+  if cf_records.key?(domain_name)
+    if ip != cf_records[domain_name][:ip]
+      puts "Updating #{domain_name} from #{cf_records[domain_name][:ip]} to #{ip}"
+      cf.update_record(name, ip, cf_records[domain_name][:id])
+      result += 1
+    end
+  else
+    puts "Creating new A record for #{name} pointing to #{ip}"
+    cf.create_record(name, ip)
+    result += 1
+  end
+end
+
+puts "Updated #{result} record(s)"
