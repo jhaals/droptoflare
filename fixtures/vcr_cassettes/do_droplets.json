@@ -1,0 +1,82 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://api.digitalocean.com/v2/droplets",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "Authorization": [
+            "Bearer token"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Server": [
+            "cloudflare-nginx"
+          ],
+          "Date": [
+            "Fri, 10 Oct 2014 11:25:18 GMT"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Set-Cookie": [
+            "__cfduid=788974398745; expires=Mon, 23-Dec-2019 23:50:00 GMT; path=/; domain=.digitalocean.com; HttpOnly"
+          ],
+          "Status": [
+            "200 OK"
+          ],
+          "Ratelimit-Limit": [
+            "1200"
+          ],
+          "Ratelimit-Remaining": [
+            "1193"
+          ],
+          "Ratelimit-Reset": [
+            "1412942947"
+          ],
+          "Etag": [
+            "W/\"a1691a2dce3ebd7f49fa4b528e9c7d6b\""
+          ],
+          "Cache-Control": [
+            "must-revalidate, private, max-age=0"
+          ],
+          "X-Request-Id": [
+            "ac73b7b03cc11fcac86701b11e51aac5"
+          ],
+          "X-Runtime": [
+            "0.223693"
+          ],
+          "X-Rack-Cache": [
+            "miss"
+          ],
+          "Cf-Ray": [
+            "177274dc31070f4b-FRA"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\n  \"droplets\":[\n    {\n      \"id\":2793201,\n      \"name\":\"d1\",\n      \"memory\":1024,\n      \"vcpus\":1,\n      \"disk\":30,\n      \"region\":{\n        \"slug\":\"lon1\",\n        \"name\":\"London 1\",\n        \"sizes\":[\n          \"512mb\",\n          \"1gb\",\n          \"2gb\",\n          \"4gb\",\n          \"8gb\",\n          \"32gb\",\n          \"48gb\",\n          \"64gb\",\n          \"16gb\"\n        ],\n        \"available\":true,\n        \"features\":[\n          \"virtio\",\n          \"private_networking\",\n          \"backups\",\n          \"ipv6\",\n          \"metadata\"\n        ]\n      },\n      \"image\":{\n        \"id\":6510539,\n        \"name\":\"Ubuntu 14.04 x64\",\n        \"distribution\":\"Ubuntu\",\n        \"slug\":\"ubuntu-14-04-x64\",\n        \"public\":true,\n        \"regions\":[\n          \"nyc1\",\n          \"ams1\",\n          \"sfo1\",\n          \"nyc2\",\n          \"ams2\",\n          \"sgp1\",\n          \"lon1\",\n          \"nyc3\",\n          \"ams3\"\n        ],\n        \"created_at\":\"2014-10-02T18:54:14Z\"\n      },\n      \"size\":{\n        \"slug\":\"1gb\",\n        \"transfer\":2,\n        \"price_monthly\":10.0,\n        \"price_hourly\":0.01488\n      },\n      \"locked\":false,\n      \"status\":\"active\",\n      \"networks\":{\n        \"v4\":[\n          {\n            \"ip_address\":\"10.131.238.11\",\n            \"netmask\":\"255.255.0.0\",\n            \"gateway\":\"10.131.0.1\",\n            \"type\":\"private\"\n          },\n          {\n            \"ip_address\":\"178.62.36.22\",\n            \"netmask\":\"255.255.192.0\",\n            \"gateway\":\"178.62.0.1\",\n            \"type\":\"public\"\n          }\n        ],\n        \"v6\":[\n          {\n            \"ip_address\":\"2A03:B0C0:0001:00D0:0000:0000:00FC:D001\",\n            \"cidr\":64,\n            \"gateway\":\"2A03:B0C0:0001:00D0:0000:0000:0000:0001\",\n            \"type\":\"public\"\n          }\n        ]\n      },\n      \"kernel\":{\n        \"id\":1682,\n        \"name\":\"Ubuntu 14.04 x64 vmlinuz-3.13.0-32-generic\",\n        \"version\":\"3.13.0-32-generic\"\n      },\n      \"created_at\":\"2014-10-06T13:49:26Z\",\n      \"features\":[\n        \"private_networking\",\n        \"ipv6\",\n        \"virtio\"\n      ],\n      \"backup_ids\":[],\n      \"snapshot_ids\":[]\n    },\n    {\n      \"id\":2822856,\n      \"name\":\"t1\",\n      \"memory\":512,\n      \"vcpus\":1,\n      \"disk\":20,\n      \"region\":{\n        \"slug\":\"lon1\",\n        \"name\":\"London 1\",\n        \"sizes\":[\n          \"512mb\",\n          \"1gb\",\n          \"2gb\",\n          \"4gb\",\n          \"8gb\",\n          \"32gb\",\n          \"48gb\",\n          \"64gb\",\n          \"16gb\"\n        ],\n        \"available\":true,\n        \"features\":[\n          \"virtio\",\n          \"private_networking\",\n          \"backups\",\n          \"ipv6\",\n          \"metadata\"\n        ]\n      },\n      \"image\":{\n        \"id\":6510539,\n        \"name\":\"Ubuntu 14.04 x64\",\n        \"distribution\":\"Ubuntu\",\n        \"slug\":\"ubuntu-14-04-x64\",\n        \"public\":true,\n        \"regions\":[\n          \"nyc1\",\n          \"ams1\",\n          \"sfo1\",\n          \"nyc2\",\n          \"ams2\",\n          \"sgp1\",\n          \"lon1\",\n          \"nyc3\",\n          \"ams3\"\n        ],\n        \"created_at\":\"2014-10-02T18:54:14Z\"\n      },\n      \"size\":{\n        \"slug\":\"512mb\",\n        \"transfer\":1,\n        \"price_monthly\":5.0,\n        \"price_hourly\":0.00744\n      },\n      \"locked\":false,\n      \"status\":\"active\",\n      \"networks\":{\n        \"v4\":[\n          {\n            \"ip_address\":\"10.131.238.172\",\n            \"netmask\":\"255.255.0.0\",\n            \"gateway\":\"10.131.0.1\",\n            \"type\":\"private\"\n          },\n          {\n            \"ip_address\":\"178.62.20.222\",\n            \"netmask\":\"255.255.192.0\",\n            \"gateway\":\"178.62.0.1\",\n            \"type\":\"public\"\n          }\n        ],\n        \"v6\":[]\n      },\n      \"kernel\":{\n        \"id\":1682,\n        \"name\":\"Ubuntu 14.04 x64 vmlinuz-3.13.0-32-generic\",\n        \"version\":\"3.13.0-32-generic\"\n      },\n      \"created_at\":\"2014-10-09T11:46:12Z\",\n      \"features\":[\n        \"private_networking\",\n        \"virtio\"\n      ],\n      \"backup_ids\":[],\n      \"snapshot_ids\":[]\n    }\n  ],\n  \"meta\":{\n    \"total\":2\n  }\n}\n"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Fri, 10 Oct 2014 11:25:19 GMT"
+    }
+  ],
+  "recorded_with": "VCR 2.9.3"
+}
