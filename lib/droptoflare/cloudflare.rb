@@ -1,6 +1,7 @@
 require 'json'
 require 'httparty'
 
+# methods to create/update/list Cloudflare A records
 class Cloudflare
   def initialize(cf_token, domain, email)
     @cf_token = cf_token
@@ -8,8 +9,9 @@ class Cloudflare
     @email = email
   end
 
+  # Create new A record
   def create_record(name, ip)
-    options = {
+    data = {
       body: {
         a: 'rec_new',
         tkn: @cf_token,
@@ -21,18 +23,13 @@ class Cloudflare
         ttl: 120
       }
     }
-    r = JSON.parse(
-      HTTParty.post('https://www.cloudflare.com/api_json.html', options).body)
-    if r['result'] == 'error'
-      puts r['msg']
-      return false
-    end
-    return true if r['result'] == 'success'
+    query(data)
   end
 
+  # Return hash with all A records for domain
   def records
     entries = {}
-    options = {
+    data = {
       body: {
         a: 'rec_load_all',
         tkn: @cf_token,
@@ -40,8 +37,7 @@ class Cloudflare
         z: @domain
       }
     }
-    r = JSON.parse(
-      HTTParty.post('https://www.cloudflare.com/api_json.html', options).body)
+    r = query(data)
     r['response']['recs']['objs'].each do |e|
       next if e['type'] != 'A'
       entries[e['name']] = { ip: e['content'], id: e['rec_id'] }
@@ -49,8 +45,9 @@ class Cloudflare
     entries
   end
 
+  # Update existing record
   def update_record(name, ip, id)
-    options = {
+    data = {
       body: {
         a: 'rec_edit',
         tkn: @cf_token,
@@ -63,12 +60,15 @@ class Cloudflare
         ttl: 120
       }
     }
-    r = JSON.parse(
-      HTTParty.post('https://www.cloudflare.com/api_json.html', options).body)
-    if r['result'] == 'error'
-      puts r['msg']
-      return false
-    end
-    return true if r['result'] == 'success'
+    query(data)
+  end
+
+  private
+
+  def query(data)
+    resp = HTTParty.post('https://www.cloudflare.com/api_json.html', data)
+    r = JSON.parse(resp.body)
+    fail r['msg'] if r['result'] != 'success'
+    r
   end
 end
