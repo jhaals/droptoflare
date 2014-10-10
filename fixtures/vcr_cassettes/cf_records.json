@@ -1,0 +1,69 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "post",
+        "uri": "https://www.cloudflare.com/api_json.html",
+        "body": {
+          "encoding": "UTF-8",
+          "string": "a=rec_load_all&tkn=token&email=johan%40haals.se&z=pyp.se"
+        },
+        "headers": {
+
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Server": [
+            "cloudflare-nginx"
+          ],
+          "Date": [
+            "Fri, 10 Oct 2014 14:24:27 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Set-Cookie": [
+            "__cfduid=ljk; expires=Mon, 23-Dec-2019 23:50:00 GMT; path=/; domain=.cloudflare.com; HttpOnly",
+            "vses2=jkl; path=/; domain=www.cloudflare.com; secure; HttpOnly"
+          ],
+          "Expires": [
+            "Thu, 19 Nov 1981 08:52:00 GMT"
+          ],
+          "Cache-Control": [
+            "no-store, no-cache, must-revalidate, post-check=0, pre-check=0"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Vary": [
+            "Accept-Encoding"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=31536000"
+          ],
+          "Cf-Ray": [
+            "17737b49374d0bf9-AMS"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"request\":{\"act\":\"rec_load_all\"},\"response\":{\"recs\":{\"has_more\":false,\"count\":3,\"objs\":[{\"rec_id\":\"170347876\",\"rec_hash\":\"672943c14463f56c76890206c1313922\",\"zone_name\":\"pyp.se\",\"name\":\"d1.pyp.se\",\"display_name\":\"d1\",\"type\":\"A\",\"prio\":null,\"content\":\"178.62.36.22\",\"display_content\":\"178.62.36.22\",\"ttl\":\"120\",\"ttl_ceil\":86400,\"ssl_id\":\"89284\",\"ssl_status\":\"V\",\"ssl_expires_on\":null,\"auto_ttl\":0,\"service_mode\":\"0\",\"props\":{\"proxiable\":1,\"cloud_on\":0,\"cf_open\":1,\"ssl\":1,\"expired_ssl\":0,\"expiring_ssl\":0,\"pending_ssl\":0,\"vanity_lock\":0}},{\"rec_id\":\"171152869\",\"rec_hash\":\"62aa4f4a85ab2c3aed0ed7927df2a7ab\",\"zone_name\":\"pyp.se\",\"name\":\"t1.pyp.se\",\"display_name\":\"t1\",\"type\":\"A\",\"prio\":null,\"content\":\"178.62.20.222\",\"display_content\":\"178.62.20.222\",\"ttl\":\"120\",\"ttl_ceil\":86400,\"ssl_id\":\"89284\",\"ssl_status\":\"V\",\"ssl_expires_on\":null,\"auto_ttl\":0,\"service_mode\":\"0\",\"props\":{\"proxiable\":1,\"cloud_on\":0,\"cf_open\":1,\"ssl\":1,\"expired_ssl\":0,\"expiring_ssl\":0,\"pending_ssl\":0,\"vanity_lock\":0}},{\"rec_id\":\"170347888\",\"rec_hash\":\"4e3a8efa226d2019cf85f4dc05582c7c\",\"zone_name\":\"pyp.se\",\"name\":\"m.pyp.se\",\"display_name\":\"m\",\"type\":\"CNAME\",\"prio\":null,\"content\":\"d1.pyp.se\",\"display_content\":\"d1.pyp.se\",\"ttl\":\"1\",\"ttl_ceil\":86400,\"ssl_id\":\"89284\",\"ssl_status\":\"V\",\"ssl_expires_on\":null,\"auto_ttl\":1,\"service_mode\":\"0\",\"props\":{\"proxiable\":1,\"cloud_on\":0,\"cf_open\":1,\"ssl\":1,\"expired_ssl\":0,\"expiring_ssl\":0,\"pending_ssl\":0,\"vanity_lock\":0}}]}},\"result\":\"success\",\"msg\":null}"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Fri, 10 Oct 2014 14:24:27 GMT"
+    }
+  ],
+  "recorded_with": "VCR 2.9.3"
+}
