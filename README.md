@@ -2,7 +2,9 @@
 droptoflare adds your DigitalOcean Droplets as A records in Cloudflare.
 droptoflare will update DNS records if you re-create a Droplet with the same name.
 
-Please note that this code has poor error reporting and no tests.
+### Installation
+
+    gem install droptoflare
 
 Create `~/.droptoflare.yaml` and add the following
 
@@ -23,6 +25,6 @@ Run!
     Updated 0 record(s)
 
 ### Todo
-- tests
-- error handling
+- more tests
+- better error handling
 - ability to set TTL (120s at the moment)
