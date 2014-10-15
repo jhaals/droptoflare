@@ -1,5 +1,6 @@
 require 'json'
-require 'httparty'
+require 'net/http'
+require 'uri'
 
 # methods to create/update/list Cloudflare A records
 class Cloudflare
@@ -12,16 +13,14 @@ class Cloudflare
   # Create new A record
   def create_record(name, ip)
     data = {
-      body: {
-        a: 'rec_new',
-        tkn: @cf_token,
-        email: @email,
-        z: @domain,
-        name: name,
-        content: ip,
-        type: 'A',
-        ttl: 120
-      }
+      a: 'rec_new',
+      tkn: @cf_token,
+      email: @email,
+      z: @domain,
+      name: name,
+      content: ip,
+      type: 'A',
+      ttl: 120
     }
     query(data)
   end
@@ -30,12 +29,10 @@ class Cloudflare
   def records
     entries = {}
     data = {
-      body: {
-        a: 'rec_load_all',
-        tkn: @cf_token,
-        email: @email,
-        z: @domain
-      }
+      a: 'rec_load_all',
+      tkn: @cf_token,
+      email: @email,
+      z: @domain
     }
     r = query(data)
     r['response']['recs']['objs'].each do |e|
@@ -48,17 +45,15 @@ class Cloudflare
   # Update existing record
   def update_record(name, ip, id)
     data = {
-      body: {
-        a: 'rec_edit',
-        tkn: @cf_token,
-        email: @email,
-        z: @domain,
-        name: name,
-        content: ip,
-        id: id,
-        type: 'A',
-        ttl: 120
-      }
+      a: 'rec_edit',
+      tkn: @cf_token,
+      email: @email,
+      z: @domain,
+      name: name,
+      content: ip,
+      id: id,
+      type: 'A',
+      ttl: 120
     }
     query(data)
   end
@@ -66,7 +61,8 @@ class Cloudflare
   private
 
   def query(data)
-    resp = HTTParty.post('https://www.cloudflare.com/api_json.html', data)
+    uri = URI.parse('https://www.cloudflare.com/api_json.html')
+    resp = Net::HTTP.post_form(uri, data)
     r = JSON.parse(resp.body)
     fail r['msg'] if r['result'] != 'success'
     r

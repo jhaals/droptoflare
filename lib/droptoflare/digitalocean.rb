@@ -1,4 +1,5 @@
-require 'httparty'
+require 'net/http'
+require 'uri'
 require 'json'
 
 # list DigitalOcean Droplets
@@ -9,11 +10,16 @@ class DigitalOcean
 
   # Return hash with droplets: droplet_name => ipaddress
   def droplets
-    response = HTTParty.get(
-      'https://api.digitalocean.com/v2/droplets',
-      headers: { 'Authorization' => "Bearer #{@token}" })
+    uri = URI.parse('https://api.digitalocean.com/v2/droplets')
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+
+    req = Net::HTTP::Get.new(uri.request_uri)
+    req.add_field('Authorization', "Bearer #{@token}")
+
+    response = http.request(req)
     r = JSON.parse(response.body)
-    fail r['message'] if response.code != 200
+    fail r['message'] if response.code != '200'
 
     droplets = {}
     r['droplets'].each do |e|
