@@ -1,4 +1,4 @@
-#droptoflare
+#droptoflare ![travis](https://api.travis-ci.org/jhaals/droptoflare.svg?branch=master)
 droptoflare adds your DigitalOcean Droplets as A records in Cloudflare.
 droptoflare will update DNS records if you re-create a Droplet with the same name.
 
